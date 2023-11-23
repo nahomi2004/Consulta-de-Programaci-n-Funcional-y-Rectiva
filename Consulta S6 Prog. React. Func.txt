@@ -1,0 +1,266 @@
+Consulta S6 Prog. React. Func
+
+			>>>>>>> PARTE I <<<<<<<
+
+CREAR FÓRMULA Y APLICARLA
+
+--------------------------------
+| (b-a)*((ƒ(a)+4*ƒ(û)+ƒ(b))/6) |
+--------------------------------
+
+
+scala> def integracion(f: Double => Double, a: Double, b: Double): Double = {
+     |   (b-a)*((f(a) + 4 * f((a+b)/2) + f(b))/6)
+     | }
+def integracion(f: Double => Double, a: Double, b: Double): Double
+	
+scala> val f = (x: Double) => -(x * x) + 8 * x - 12
+val f: Double => Double = $Lambda$1066/0x0000000100739840@26aee0a6
+
+scala> integracion(f, 3, 5)
+val res0: Double = 7.333333333333333
+
+
+
+			>>>>>>> PARTE II <<<<<<<
+
+	--------------------
+	| PRIMERA FUNCIÓN: |
+	--------------------
+
+1. ƒ(x) = -(x*x)+8*x-12					a = 3, b = 5
+
+scala> val f = (x: Double) => -(x * x) + 8 * x - 12
+val f: Double => Double = $Lambda$1066/0x0000000100739840@26aee0a6
+
+scala> integracion(f, 3, 5)
+val res0: Double = 7.333333333333333
+
+	--------------------
+	| SEGUNDA FUNCIÓN: |
+	--------------------
+
+2. ƒ(x) = 3*(x*x)					a = 0, b = 2
+
+scala> val f2 = (x: Double) => 3 * (x * x)
+val f2: Double => Double = $Lambda$1079/0x0000000100741040@366b4a7b
+
+scala> integracion(f2, 0, 2)
+val res1: Double = 8.0
+
+	--------------------
+	| TERCERA FUNCIÓN: |
+	--------------------
+
+3. ƒ(x) = (x + 2*x*x - x*x*x + 5*x*x*x*x)		a = -1, b = 1
+
+scala> val f3 = (x: Double) => x + 2 * x * x - x * x * x + 5 * x * x * x * x
+val f3: Double => Double = $Lambda$1080/0x00000001001da040@1a1f22f2
+
+scala> integracion(f3, -1, 1)
+val res2: Double = 4.666666666666667
+
+
+	-------------------
+	| CUARTA FUNCIÓN: |
+	-------------------
+
+4. ƒ(x) = (2*x + 1)/(x*x + x)				a = 1, b = 2
+
+scala> val f4 = (x: Double) => (2 * x + 1) / (x * x + x)
+val f4: Double => Double = $Lambda$1081/0x00000001001da840@b8c6406
+
+scala> integracion(f4, 1, 2)
+val res3: Double = 1.0999999999999999
+
+	-------------------
+	| QUINTA FUNCIÓN: |
+	-------------------
+
+5. ƒ(x) = e^x						a = 0, b = 1
+
+scala> val f5 = (x: Double) => math.exp(x)
+val f5: Double => Double = $Lambda$1082/0x00000001001db040@331da721
+
+scala> integracion(f5, 0, 1)
+val res4: Double = 1.7188611518765928
+
+	------------------
+	| SEXTA FUNCIÓN: |
+	------------------
+
+6. ƒ(x) = 1/(x-1)^1/2					a = 2, b = 3
+
+scala> val f6 = (x: Double) => 1 / (math.sqrt(x - 1))
+val f6: Double => Double = $Lambda$1083/0x00000001001dc040@6a063931
+
+scala> integracion(f6, 2, 3)
+val res5: Double = 0.8288488508162422
+
+	--------------------
+	| SÉPTIMA FUNCIÓN: |
+	--------------------
+
+7. ƒ(x) = 1/(1 + x*x)					a = 0, b = 1
+
+scala> val f7 = (x: Double) => 1 / (1 + x * x)
+val f7: Double => Double = $Lambda$1084/0x0000000100747840@1ad28f2
+
+scala> integracion(f7, 0, 1)
+val res6: Double = 0.7833333333333333
+
+
+
+			>>>>>>> PARTE III <<<<<<<
+
+------------------------------------------
+| PRIMERO ESCRIBÍ LA FUNCIÓN integración |
+------------------------------------------
+
+scala> def integracion(f: Double => Double, a: Double, b: Double): Double = {
+     |   (b-a)*((f(a) + 4 * f((a+b)/2) + f(b))/6)
+     | }
+def integracion(f: Double => Double, a: Double, b: Double): Double
+
+--------------------------------------------------------------------------------
+| LUEGO HICE LA FUNCIÓN calcularError que recibe 2 Double y devuelve un Double |
+--------------------------------------------------------------------------------
+
+scala> def calcularError(vO: Double, vE: Double): Double = {
+     |   math.abs(vE - vO)
+     | }
+def calcularError(vO: Double, vE: Double): Double
+
+-------------------------------------------------
+| TERCERO PROCEDO A DEFINIR TODAS LAS FUNCIONES |
+-------------------------------------------------
+
+scala> val f = (x: Double) => -(x * x) + 8 * x - 12
+val f: Double => Double = $Lambda$1066/0x0000000100739840@26aee0a6
+
+scala> val f2 = (x: Double) => 3 * (x * x)
+val f2: Double => Double = $Lambda$1079/0x0000000100741040@366b4a7b
+
+scala> val f3 = (x: Double) => x + 2 * x * x - x * x * x + 5 * x * x * x * x
+val f3: Double => Double = $Lambda$1080/0x00000001001da040@1a1f22f2
+
+scala> val f4 = (x: Double) => (2 * x + 1) / (x * x + x)
+val f4: Double => Double = $Lambda$1081/0x00000001001da840@b8c6406
+
+scala> val f5 = (x: Double) => math.exp(x)
+val f5: Double => Double = $Lambda$1082/0x00000001001db040@331da721
+
+scala> val f6 = (x: Double) => 1 / (math.sqrt(x - 1))
+val f6: Double => Double = $Lambda$1083/0x00000001001dc040@6a063931
+
+scala> val f7 = (x: Double) => 1 / (1 + x * x)
+val f7: Double => Double = $Lambda$1084/0x0000000100747840@1ad28f2
+
+------------------------------------------------------------------------
+| ENVÍO EL RESULTADO DE LA FUNCIÓN integracion Y EL RESULTADO ESPERADO |
+------------------------------------------------------------------------
+
+scala> calcularError(integracion(f, 3, 5), 7.33)
+val res7: Double = 0.0033333333333329662
+
+scala> calcularError(integracion(f2, 0, 2), 8)
+val res8: Double = 0.0
+
+scala> calcularError(integracion(f3, -1, 1), 3.333)
+val res9: Double = 1.3336666666666668
+
+scala> calcularError(integracion(f4, 1, 2), 1.09861)
+val res10: Double = 0.0013899999999997803
+
+scala> calcularError(integracion(f5, 0, 1), 1.71828)
+val res11: Double = 5.811518765928003E-4
+
+scala> calcularError(integracion(f6, 2, 3), 0.828427)
+val res12: Double = 4.2185081624213083E-4
+
+scala> calcularError(integracion(f7, 0, 1), 0.785398)
+val res13: Double = 0.0020646666666667146
+
+
+
+
+
+
+
+
+		-----------------------------------------
+		|		SOLO CÓDIGO		|
+		-----------------------------------------
+
+scala> def integracion(f: Double => Double, a: Double, b: Double): Double = {
+     |   (b-a)*((f(a) + 4 * f((a+b)/2) + f(b))/6)
+     | }
+def integracion(f: Double => Double, a: Double, b: Double): Double
+
+scala> val f = (x: Double) => -(x * x) + 8 * x - 12
+val f: Double => Double = $Lambda$1066/0x0000000100739840@26aee0a6
+
+scala> integracion(f, 3, 5)
+val res0: Double = 7.333333333333333
+
+scala> val f2 = (x: Double) => 3 * (x * x)
+val f2: Double => Double = $Lambda$1079/0x0000000100741040@366b4a7b
+
+scala> integracion(f2, 0, 2)
+val res1: Double = 8.0
+
+scala> val f3 = (x: Double) => x + 2 * x * x - x * x * x + 5 * x * x * x * x
+val f3: Double => Double = $Lambda$1080/0x00000001001da040@1a1f22f2
+
+scala> integracion(f3, -1, 1)
+val res2: Double = 4.666666666666667
+
+scala> val f4 = (x: Double) => (2 * x + 1) / (x * x + x)
+val f4: Double => Double = $Lambda$1081/0x00000001001da840@b8c6406
+
+scala> integracion(f4, 1, 2)
+val res3: Double = 1.0999999999999999
+
+scala> val f5 = (x: Double) => math.exp(x)
+val f5: Double => Double = $Lambda$1082/0x00000001001db040@331da721
+
+scala> integracion(f5, 0, 1)
+val res4: Double = 1.7188611518765928
+
+scala> val f6 = (x: Double) => 1 / (math.sqrt(x - 1))
+val f6: Double => Double = $Lambda$1083/0x00000001001dc040@6a063931
+
+scala> integracion(f6, 2, 3)
+val res5: Double = 0.8288488508162422
+
+scala> val f7 = (x: Double) => 1 / (1 + x * x)
+val f7: Double => Double = $Lambda$1084/0x0000000100747840@1ad28f2
+
+scala> integracion(f7, 0, 1)
+val res6: Double = 0.7833333333333333
+
+scala> def calcularError(vO: Double, vE: Double): Double = {
+     |   math.abs(vE - vO)
+     | }
+def calcularError(vO: Double, vE: Double): Double
+
+scala> calcularError(integracion(f, 3, 5), 7.33)
+val res7: Double = 0.0033333333333329662
+
+scala> calcularError(integracion(f2, 0, 2), 8)
+val res8: Double = 0.0
+
+scala> calcularError(integracion(f3, -1, 1), 3.333)
+val res9: Double = 1.3336666666666668
+
+scala> calcularError(integracion(f4, 1, 2), 1.09861)
+val res10: Double = 0.0013899999999997803
+
+scala> calcularError(integracion(f5, 0, 1), 1.71828)
+val res11: Double = 5.811518765928003E-4
+
+scala> calcularError(integracion(f6, 2, 3), 0.828427)
+val res12: Double = 4.2185081624213083E-4
+
+scala> calcularError(integracion(f7, 0, 1), 0.785398)
+val res13: Double = 0.0020646666666667146
